@@ -1,0 +1,24 @@
+h1 {
+	color: red;
+}
+
+#h1 {
+	color: blue;
+}
+
+.h1 {
+	color: yellow;
+}
+
+h2 {
+	color: pink;
+}
+
+.box-alert {
+	background: darkgray;
+	color: gray;
+	border: 1px solid #7e7772e0;
+	border-radius: 4px;
+	padding: 5px;
+	width: 450px;
+}
