@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+			.container {
+				border: 1px solid #c8c8da;
+				width: 400px;
+				padding: 15px;
+				background: aliceblue;
+			}
+
+			p.paragraph {
+				border: 1px solid crimson;
+				padding: 12px 8px;
+				background: antiquewhite;
+			}
+
+			button.btn-delete {
+				padding: 4px 12px;
+				border: 1px solid red;
+				background: hotpink;
+				color: white;
+				border-radius: 6px;
+				position: relative;
+			}
+
+			button.btn-keep {
+				padding: 4px 12px;
+				border-radius: 6px;
+				background: azure;
+				border: 1px solid black;
+			}
+
+			p.dialog {
+				display: none;
+				position: absolute;
+				border: 1px solid aqua;
+				background: aliceblue;
+				padding: 10px;
+				width: 130px;
+				text-align: center;
+				top: 75px;
+				left: 4px;
+			}
+
+			.btn-delete:hover ~ .dialog {
+				display: block;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<p class="paragraph">
+				Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores tempora
+				iste laborum mollitia, facere voluptatibus quae perspiciatis. Impedit,
+				distinctio at aperiam delectus vel dolor numquam aspernatur, autem aut,
+				sed sunt?
+			</p>
+			<div class="btn">
+				<button class="btn-delete">Delete</button>
+				<button class="btn-keep">Keep</button>
+				<p class="dialog">Có không giữ, xóa đừng tiếc</p>
+			</div>
+		</div>
+	</body>
+</html>
