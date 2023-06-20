@@ -1,0 +1,146 @@
+/* body {
+	background: red !important;
+}
+
+@media (max-width: 768px) and (min-width: 600px) {
+	body {
+		background: blue !important;
+	}
+} */
+
+/* CSS file figma */
+header.container-header {
+	display: flex;
+	justify-content: space-between;
+	padding: 16px 24px;
+	align-items: center;
+}
+
+.container-header__bars {
+	display: flex;
+	align-items: center;
+}
+
+input.container-header__search {
+	width: 471px;
+	height: 40px;
+	border-radius: 8px;
+	border: 1px solid #828282;
+	padding-left: 16px;
+}
+
+img {
+}
+
+.container-header__others img {
+	height: 40px;
+	width: 40px;
+}
+
+.container-header__others {
+	display: flex;
+	align-items: center;
+}
+
+i.fa-solid.fa-bars::before {
+	height: 12px;
+	width: 18px;
+}
+
+.fa-bars:before,
+.fa-navicon:before {
+	height: 12px;
+	width: 18px;
+}
+
+.container-header__bars h3 {
+	font-size: 24px;
+	font-weight: 400;
+	margin-left: 27px;
+}
+
+i.fa-regular.fa-heart {
+	margin-left: 29px;
+	margin-right: 26px;
+}
+
+.container-breadcrumbs {
+	display: flex;
+	align-items: center;
+	padding: 16px;
+}
+
+.container-breadcrumbs h1 {
+	margin: 0px;
+	margin-left: 30px;
+	font-size: 36px;
+	font-weight: 600;
+}
+
+.card-user-left {
+	background: #e2e2e2;
+	width: 50%;
+	padding: 16px;
+	border-radius: 16px;
+}
+
+.card-user-right {
+	/* background: #FFD38A; */
+	width: 50%;
+	padding: 16px 16px;
+}
+
+.card-user {
+	display: flex;
+	width: 50%;
+	max-width: 476.5px;
+	background: #ffd38a;
+	border-radius: 16px;
+}
+
+.card-user-left img {
+	width: 206.25px;
+	height: 200px;
+}
+
+span.card-user-left__icon {
+	margin-left: 16px;
+}
+
+h2.card-user-right-name {
+	font-size: 36px;
+	font-weight: 600;
+	margin: 0px;
+}
+
+h2.card-user-right-job {
+	font-size: 18px;
+	font-weight: 600;
+	margin: 0px;
+	margin-top: 16px;
+	margin-bottom: 8px;
+}
+
+.card-user-right-location {
+	display: flex;
+	margin-bottom: 8px;
+	font-size: 18px;
+	font-weight: 400;
+}
+
+.card-user-right-speaks {
+	font-size: 18px;
+	width: 120px;
+	text-align: end;
+	font-weight: 400;
+}
+
+.card-user-right-icons {
+	margin-top: 44px;
+	display: flex;
+	justify-content: space-evenly;
+}
+
+.card-user-right-location div {
+	margin-left: 8px;
+}

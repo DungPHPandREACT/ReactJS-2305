@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Figma</title>
+		<link rel="stylesheet" href="styles.css" />
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+			integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+			crossorigin="anonymous"
+			referrerpolicy="no-referrer"
+		/>
+	</head>
+	<body>
+		<!-- <i class="fa-solid fa-bars"></i>
+		<i class="fa-regular fa-heart"></i>
+		<i class="fa-sharp fa-solid fa-house"></i> -->
+		<div class="container">
+			<header class="container-header">
+				<div class="container-header__bars">
+					<i class="fa-solid fa-bars"></i>
+					<h3>Social</h3>
+				</div>
+				<input
+					placeholder="Search"
+					type="text"
+					class="container-header__search"
+				/>
+				<div class="container-header__others">
+					<i class="fa-sharp fa-solid fa-house"></i>
+					<i class="fa-regular fa-heart"></i>
+					<img src="./imgs/avatar.png" alt="Avatar" />
+				</div>
+			</header>
+
+			<div class="container-breadcrumbs">
+				<i class="fa-solid fa-chevron-left"></i>
+				<h1>Speakers</h1>
+			</div>
+
+			<div class="container-body">
+				<div class="card-user">
+					<div class="card-user-left">
+						<img
+							src="https://png.pngtree.com/png-vector/20220901/ourmid/pngtree-male-company-employee-avatar-icon-wearing-a-necktie-png-image_6133877.png"
+						/>
+						<span class="card-user-left__icon">
+							<svg
+								width="32"
+								height="32"
+								viewBox="0 0 32 32"
+								fill="none"
+								xmlns="http://www.w3.org/2000/svg"
+							>
+								<rect width="32" height="32" rx="16" fill="black" />
+								<path
+									d="M22.6666 7.66666H9.33329C8.41663 7.66666 7.66663 8.41666 7.66663 9.33332V24.3333L11 21H22.6666C23.5833 21 24.3333 20.25 24.3333 19.3333V9.33332C24.3333 8.41666 23.5833 7.66666 22.6666 7.66666Z"
+									fill="white"
+								/>
+							</svg>
+						</span>
+
+						<span class="card-user-left__icon">
+							<svg
+								width="32"
+								height="32"
+								viewBox="0 0 32 32"
+								fill="none"
+								xmlns="http://www.w3.org/2000/svg"
+							>
+								<rect width="32" height="32" rx="16" fill="black" />
+								<path
+									d="M16 18.5C17.3834 18.5 18.4917 17.3833 18.4917 16L18.5 11C18.5 9.61667 17.3834 8.5 16 8.5C14.6167 8.5 13.5 9.61667 13.5 11V16C13.5 17.3833 14.6167 18.5 16 18.5ZM21.0667 16C20.7167 16 20.425 16.25 20.375 16.5917C20.0667 18.7667 18.1084 20.25 16 20.25C13.8917 20.25 11.9334 18.775 11.625 16.5917C11.575 16.25 11.275 16 10.9334 16C10.5 16 10.1667 16.3833 10.225 16.8083C10.6084 19.2833 12.6917 21.225 15.1667 21.6V23.5C15.1667 23.9583 15.5417 24.3333 16 24.3333C16.4584 24.3333 16.8334 23.9583 16.8334 23.5V21.6C19.3 21.2417 21.3917 19.2833 21.775 16.8083C21.8334 16.3833 21.5 16 21.0667 16Z"
+									fill="white"
+								/>
+							</svg>
+						</span>
+
+						<span class="card-user-left__icon">
+							<svg
+								width="32"
+								height="32"
+								viewBox="0 0 32 32"
+								fill="none"
+								xmlns="http://www.w3.org/2000/svg"
+							>
+								<rect width="32" height="32" rx="16" fill="black" />
+								<path
+									d="M20.1667 14.75V11.8333C20.1667 11.375 19.7917 11 19.3333 11H9.33333C8.875 11 8.5 11.375 8.5 11.8333V20.1667C8.5 20.625 8.875 21 9.33333 21H19.3333C19.7917 21 20.1667 20.625 20.1667 20.1667V17.25L22.075 19.1583C22.6 19.6833 23.5 19.3083 23.5 18.5667V13.425C23.5 12.6833 22.6 12.3083 22.075 12.8333L20.1667 14.75Z"
+									fill="white"
+								/>
+							</svg>
+						</span>
+					</div>
+					<div class="card-user-right">
+						<h2 class="card-user-right-name">Olivia Little</h2>
+						<h2 class="card-user-right-job">UI / UX Designer</h2>
+						<div class="card-user-right-location">
+							<span>
+								<svg
+									width="12"
+									height="18"
+									viewBox="0 0 12 18"
+									fill="none"
+									xmlns="http://www.w3.org/2000/svg"
+								>
+									<path
+										d="M6.08333 0.666656C2.85833 0.666656 0.25 3.27499 0.25 6.49999C0.25 10.875 6.08333 17.3333 6.08333 17.3333C6.08333 17.3333 11.9167 10.875 11.9167 6.49999C11.9167 3.27499 9.30833 0.666656 6.08333 0.666656ZM6.08333 8.58332C4.93333 8.58332 4 7.64999 4 6.49999C4 5.34999 4.93333 4.41666 6.08333 4.41666C7.23333 4.41666 8.16667 5.34999 8.16667 6.49999C8.16667 7.64999 7.23333 8.58332 6.08333 8.58332Z"
+										fill="black"
+									/>
+								</svg>
+							</span>
+							<div>Seattle, USA</div>
+						</div>
+						<div class="card-user-right-speaks">Speaks:English, Spanish</div>
+						<div class="card-user-right-icons">
+							<svg
+								width="32"
+								height="32"
+								viewBox="0 0 32 32"
+								fill="none"
+								xmlns="http://www.w3.org/2000/svg"
+							>
+								<rect width="32" height="32" rx="16" fill="black" />
+								<path
+									d="M20.1667 14.75V11.8333C20.1667 11.375 19.7917 11 19.3333 11H9.33333C8.875 11 8.5 11.375 8.5 11.8333V20.1667C8.5 20.625 8.875 21 9.33333 21H19.3333C19.7917 21 20.1667 20.625 20.1667 20.1667V17.25L22.075 19.1583C22.6 19.6833 23.5 19.3083 23.5 18.5667V13.425C23.5 12.6833 22.6 12.3083 22.075 12.8333L20.1667 14.75Z"
+									fill="white"
+								/></svg
+							><svg
+								width="32"
+								height="32"
+								viewBox="0 0 32 32"
+								fill="none"
+								xmlns="http://www.w3.org/2000/svg"
+							>
+								<rect width="32" height="32" rx="16" fill="black" />
+								<path
+									d="M20.1667 14.75V11.8333C20.1667 11.375 19.7917 11 19.3333 11H9.33333C8.875 11 8.5 11.375 8.5 11.8333V20.1667C8.5 20.625 8.875 21 9.33333 21H19.3333C19.7917 21 20.1667 20.625 20.1667 20.1667V17.25L22.075 19.1583C22.6 19.6833 23.5 19.3083 23.5 18.5667V13.425C23.5 12.6833 22.6 12.3083 22.075 12.8333L20.1667 14.75Z"
+									fill="white"
+								/></svg
+							><svg
+								width="32"
+								height="32"
+								viewBox="0 0 32 32"
+								fill="none"
+								xmlns="http://www.w3.org/2000/svg"
+							>
+								<rect width="32" height="32" rx="16" fill="black" />
+								<path
+									d="M20.1667 14.75V11.8333C20.1667 11.375 19.7917 11 19.3333 11H9.33333C8.875 11 8.5 11.375 8.5 11.8333V20.1667C8.5 20.625 8.875 21 9.33333 21H19.3333C19.7917 21 20.1667 20.625 20.1667 20.1667V17.25L22.075 19.1583C22.6 19.6833 23.5 19.3083 23.5 18.5667V13.425C23.5 12.6833 22.6 12.3083 22.075 12.8333L20.1667 14.75Z"
+									fill="white"
+								/></svg
+							><svg
+								width="32"
+								height="32"
+								viewBox="0 0 32 32"
+								fill="none"
+								xmlns="http://www.w3.org/2000/svg"
+							>
+								<rect width="32" height="32" rx="16" fill="black" />
+								<path
+									d="M20.1667 14.75V11.8333C20.1667 11.375 19.7917 11 19.3333 11H9.33333C8.875 11 8.5 11.375 8.5 11.8333V20.1667C8.5 20.625 8.875 21 9.33333 21H19.3333C19.7917 21 20.1667 20.625 20.1667 20.1667V17.25L22.075 19.1583C22.6 19.6833 23.5 19.3083 23.5 18.5667V13.425C23.5 12.6833 22.6 12.3083 22.075 12.8333L20.1667 14.75Z"
+									fill="white"
+								/>
+							</svg>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
