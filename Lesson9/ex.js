@@ -551,17 +551,16 @@ let users = [
 	},
 ];
 
-// Nhập vào 1 số n. Hãy tìm 1 user có id bằng n
-let n = Number(prompt('Nhập n:'));
-
-let isExistUser = false;
+const result = {};
 
 for (let user of users) {
-	if (n === user.id) {
-		console.log(user);
-		isExistUser = true;
+	const flag = result.hasOwnProperty(user.job);
+	if (flag) {
+		result[user.job] = result[user.job] + 1;
+	} else {
+		result[user.job] = 1;
 	}
 }
-if (isExistUser === false) {
-	alert('Không tìm thấy người dùng');
-}
+console.log(result);
+
+
