@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<!-- <h1 id="h1">Đây là thẻ có id</h1> -->
+		<!-- <h1 id="h1">Test id</h1> -->
+		<!-- <h1 class="h1">Đây là thẻ có class</h1> -->
+		<!-- <h1 class="h1">Đây là thẻ thứ 2 có class cũng là h1</h1> -->
+		<!-- <div class="h1">Đây là thẻ div</div> -->
+		<!-- <h1>Đây là thẻ không có gì</h1> -->
+
+		<div id="testId">
+			<h2>Hello</h2>
+			Nội dung thẻ div
+		</div>
+
+		<a id="link" href="https://www.google.com" target="_blank">Google</a>
+
+		<img
+			data-abc="999"
+			id="image"
+			src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGHnmIc1xZb-8lDzQKm0y1YU59DaH0i5-LGFs8NGg&s"
+		/>
+
+		<p id="paragraph" class="test">Đây là một đoạn văn rất dài</p>
+
+		<!-- <button onclick="logger()">Hello</button> -->
+		<button id="btn">Hello</button>
+		<script>
+			function logger() {
+				alert('Hello!');
+			}
+
+			// document.getElementById('btn').onclick = logger;
+			// document.getElementById('btn').onclick = function () {
+			// 	alert('Đây là hàm onclick1');
+			// };
+			// document.getElementById('btn').onchange = function () {
+			// 	alert('Đây là hàm onclick2');
+			// };
+
+			document.getElementById('btn').addEventListener('change', function () {
+				alert('Đây là hàm onclick1');
+			});
+
+			document.getElementById('btn').addEventListener('click', function () {
+				alert('Đây là hàm onclick2');
+			});
+			//Selector bằng id
+			// console.log(document.getElementById('h1'));
+			//Selector bằng class
+			// console.log(document.getElementsByClassName('h1'));
+			//Selector bằng tag name
+			// console.log(document.getElementsByTagName('h1'));
+			//Selector kết hợp cả id, class và tag name
+			//+ document.querySelector('tagName#id.class')
+			//Trả về phần tử đầu tiên phù hợp
+			// console.log(document.querySelector('h1.h1').innerText);
+			//+ document.querySelectorAll('tagName#id.class')
+			// console.log(document.querySelectorAll('h1.h1'));
+			//Trả về 1 mảng chứa các phần tử phù hợp
+
+			//Thay đổi nội dung
+			// document.getElementById('testId').innerHTML = '<h1>Thay đổi text</h1>';
+
+			// console.log(document.getElementById('link').getAttribute('href'));
+			// document
+			// 	.getElementById('link')
+			// 	.setAttribute('href', 'https://youtube.com');
+			// document.getElementById('link').href = 'https://youtube.com';
+			// const srcImage = document.getElementById('image');
+			// console.log(srcImage.getAttribute('data-abc'));
+			// srcImage.src =
+			// 	'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSy12WQNdeppL7r3wYI5NP0Kz2a_BKyR3ETrXDBhkRY&s';
+			// console.log(document.getElementById('link').getAttribute('target'));
+
+			// style
+			// document.getElementById('paragraph').style.color = 'pink';
+			// document.getElementById('paragraph').style.fontSize = '32px';
+
+			// classList
+			// document.getElementById('paragraph').classList.add('test');
+			// document.getElementById('paragraph').classList.remove('test');
+			document.getElementById('paragraph').classList.toggle('show');
+			//Toggle: nếu chưa có thì sẽ thêm vào, nếu có rồi thì sẽ xóa đi
+		</script>
+	</body>
+</html>
