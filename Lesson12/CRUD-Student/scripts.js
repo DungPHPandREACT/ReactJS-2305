@@ -31,6 +31,7 @@ const listStudent = [
 
 const tableStudent = document.getElementById('table-student');
 const btnAdd = document.getElementById('btn-add');
+const btnUpdate = document.getElementById('btn-update');
 const listBtnDelete = document.getElementsByClassName('btn-delete');
 btnAdd.onclick = function () {
 	const id = Number(document.getElementById('id').value);
@@ -82,7 +83,7 @@ function renderStudent() {
 						<td>${student.gender}</td>
                         <td>${student.point}</td>
                         <td>
-                            <button type="button" class="btn btn-success btn-update">Update</button>
+                            <button type="button" class="btn btn-success btn-update" onclick='updateStudent(${i})'>Update</button>
                             <button type="button" class="btn btn-danger btn-delete" onclick='deleteStudent(${i})'>Delete</button>
                         </td>
 					</tr>
@@ -96,6 +97,21 @@ function renderStudent() {
 function deleteStudent(index) {
 	listStudent.splice(index, 1); //xóa phần tử vị trí index trong mảng
 	renderStudent(); // render lại theo dữ liệu mới
+}
+
+//Update
+function updateStudent(index) {
+	const student = listStudent[index];
+
+	//Hiển thị lên input
+	document.getElementById('id').value = student.id;
+	document.getElementById('name').value = student.name;
+	document.getElementById('gender').value = student.gender;
+	document.getElementById('age').value = student.age;
+	document.getElementById('point').value = student.point;
+
+	btnUpdate.style.display = 'inline';
+	btnAdd.style.display = 'none';
 }
 
 renderStudent();
