@@ -30,6 +30,7 @@ const listStudent = [
 ];
 
 const tableStudent = document.getElementById('table-student');
+const btnAdd = document.getElementById('btn-add');
 
 let stringHTML = '';
 for (let student of listStudent) {
@@ -48,3 +49,33 @@ for (let student of listStudent) {
 
 console.log(stringHTML);
 tableStudent.innerHTML = stringHTML;
+
+btnAdd.onclick = function () {
+	const id = Number(document.getElementById('id').value);
+	const name = document.getElementById('name').value;
+	const age = Number(document.getElementById('age').value);
+	const gender = document.getElementById('gender').value;
+	const point = Number(document.getElementById('point').value);
+
+	let isExistId = false;
+
+	for (let student of listStudent) {
+		if (student.id === id) {
+			isExistId = true;
+		}
+	}
+
+	if (isExistId) {
+		alert('Id đã tồn tại, yêu cầu nhập lại');
+	} else {
+		const newStudent = {
+			id: id,
+			name: name,
+			age: age,
+			gender: gender,
+			point: point,
+		};
+
+		listStudent.push(newStudent);
+	}
+};
