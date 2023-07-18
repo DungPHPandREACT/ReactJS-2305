@@ -31,7 +31,7 @@ const listStudent = [
 
 const tableStudent = document.getElementById('table-student');
 const btnAdd = document.getElementById('btn-add');
-
+const listBtnDelete = document.getElementsByClassName('btn-delete');
 btnAdd.onclick = function () {
 	const id = Number(document.getElementById('id').value);
 	const name = document.getElementById('name').value;
@@ -80,12 +80,20 @@ function renderStudent() {
 						<td>${student.age}</td>
 						<td>${student.gender}</td>
                         <td>${student.point}</td>
+                        <td>
+                            <button type="button" class="btn btn-success btn-update">Update</button>
+                            <button type="button" class="btn btn-danger btn-delete" onclick='deleteStudent()'>Delete</button>
+                        </td>
 					</tr>
     `;
 	}
 
 	console.log(stringHTML);
 	tableStudent.innerHTML = stringHTML;
+}
+
+function deleteStudent() {
+	console.log('hello');
 }
 
 renderStudent();
