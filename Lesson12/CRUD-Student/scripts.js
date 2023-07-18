@@ -32,24 +32,6 @@ const listStudent = [
 const tableStudent = document.getElementById('table-student');
 const btnAdd = document.getElementById('btn-add');
 
-let stringHTML = '';
-for (let student of listStudent) {
-	// console.log(student);
-	// student.id
-	stringHTML += `
-                    <tr>
-						<th scope="row">${student.id}</th>
-						<td>${student.name}</td>
-						<td>${student.age}</td>
-						<td>${student.gender}</td>
-                        <td>${student.point}</td>
-					</tr>
-    `;
-}
-
-console.log(stringHTML);
-tableStudent.innerHTML = stringHTML;
-
 btnAdd.onclick = function () {
 	const id = Number(document.getElementById('id').value);
 	const name = document.getElementById('name').value;
@@ -77,5 +59,33 @@ btnAdd.onclick = function () {
 		};
 
 		listStudent.push(newStudent);
+		renderStudent();
+
+		//clear input
+		document.getElementById('id').value = '';
+		document.getElementById('name').value = '';
+		document.getElementById('gender').value = '';
+		document.getElementById('age').value = '';
+		document.getElementById('point').value = '';
 	}
 };
+
+function renderStudent() {
+	let stringHTML = '';
+	for (let student of listStudent) {
+		stringHTML += `
+                    <tr>
+						<th scope="row">${student.id}</th>
+						<td>${student.name}</td>
+						<td>${student.age}</td>
+						<td>${student.gender}</td>
+                        <td>${student.point}</td>
+					</tr>
+    `;
+	}
+
+	console.log(stringHTML);
+	tableStudent.innerHTML = stringHTML;
+}
+
+renderStudent();
