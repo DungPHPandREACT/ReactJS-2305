@@ -72,7 +72,8 @@ btnAdd.onclick = function () {
 
 function renderStudent() {
 	let stringHTML = '';
-	for (let student of listStudent) {
+	for (let i = 0; i < listStudent.length; i++) {
+		let student = listStudent[i];
 		stringHTML += `
                     <tr>
 						<th scope="row">${student.id}</th>
@@ -82,7 +83,7 @@ function renderStudent() {
                         <td>${student.point}</td>
                         <td>
                             <button type="button" class="btn btn-success btn-update">Update</button>
-                            <button type="button" class="btn btn-danger btn-delete" onclick='deleteStudent()'>Delete</button>
+                            <button type="button" class="btn btn-danger btn-delete" onclick='deleteStudent(${i})'>Delete</button>
                         </td>
 					</tr>
     `;
@@ -92,8 +93,9 @@ function renderStudent() {
 	tableStudent.innerHTML = stringHTML;
 }
 
-function deleteStudent() {
-	console.log('hello');
+function deleteStudent(index) {
+	listStudent.splice(index, 1); //xóa phần tử vị trí index trong mảng
+	renderStudent(); // render lại theo dữ liệu mới
 }
 
 renderStudent();
