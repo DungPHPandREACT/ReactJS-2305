@@ -33,6 +33,16 @@ const tableStudent = document.getElementById('table-student');
 const btnAdd = document.getElementById('btn-add');
 const btnUpdate = document.getElementById('btn-update');
 const listBtnDelete = document.getElementsByClassName('btn-delete');
+
+function clearInput() {
+	//clear input
+	document.getElementById('id').value = '';
+	document.getElementById('name').value = '';
+	document.getElementById('gender').value = '';
+	document.getElementById('age').value = '';
+	document.getElementById('point').value = '';
+}
+
 btnAdd.onclick = function () {
 	const id = Number(document.getElementById('id').value);
 	const name = document.getElementById('name').value;
@@ -62,12 +72,7 @@ btnAdd.onclick = function () {
 		listStudent.push(newStudent);
 		renderStudent();
 
-		//clear input
-		document.getElementById('id').value = '';
-		document.getElementById('name').value = '';
-		document.getElementById('gender').value = '';
-		document.getElementById('age').value = '';
-		document.getElementById('point').value = '';
+		clearInput();
 	}
 };
 
@@ -113,5 +118,33 @@ function updateStudent(index) {
 	btnUpdate.style.display = 'inline';
 	btnAdd.style.display = 'none';
 }
+
+btnUpdate.onclick = function () {
+	const id = Number(document.getElementById('id').value);
+	const name = document.getElementById('name').value;
+	const age = Number(document.getElementById('age').value);
+	const gender = document.getElementById('gender').value;
+	const point = Number(document.getElementById('point').value);
+
+	const studentUpdate = {
+		id: id,
+		name: name,
+		age: age,
+		gender: gender,
+		point: point,
+	};
+
+	//tìm kiếm
+	for (let i = 0; i < listStudent.length; i++) {
+		if (listStudent[i].id === studentUpdate.id) {
+			listStudent[i] = studentUpdate;
+		}
+	}
+
+	btnUpdate.style.display = 'none';
+	btnAdd.style.display = 'inline';
+	clearInput();
+	renderStudent();
+};
 
 renderStudent();
