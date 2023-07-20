@@ -42,35 +42,35 @@
 // 	}, 3000);
 // }, 4000);
 
-var promise = new Promise(function (resolve, reject) {
-	setTimeout(() => {
-		resolve(4);
-	}, 4000);
-});
+const promise = new Promise((resolve, reject) => {});
 
-promise
-	.then(function (x) {
-		console.log(x);
-		return new Promise(function (resolve, reject) {
-			setTimeout(() => {
-				resolve(3);
-			}, 3000);
-		});
-	})
-	.then(function (y) {
-		console.log(y);
-		return new Promise(function (resolve, reject) {
-			setTimeout(() => {
-				resolve(2);
-			}, 2000);
-		});
-	})
-	.then(function (z) {
-		console.log(z);
-	})
-	.catch(function (err) {
-		console.log('vào reject ', err);
-	})
-	.finally(function () {
-		console.log('finally');
+function testPromise(number) {
+	return new Promise((resolve, reject) => {
+		setTimeout(() => {
+			if (number > 5) {
+				return resolve(true);
+			} else {
+				return reject('Lỗi rồi');
+			}
+		}, 2000);
 	});
+}
+
+async function callPromise() {
+	testPromise(4)
+		.then((x) => {
+			console.log('vào resolve ', x);
+		})
+		.catch((error) => {
+			console.log('vào reject: ', error);
+		});
+
+	try {
+		const result = await testPromise(4);
+		console.log('vào resolve ', result);
+	} catch (e) {
+		console.log('vào reject', e);
+	}
+}
+
+callPromise();
