@@ -1,4 +1,5 @@
 import { listUser } from './users.js';
+import { posts as listPosts } from './posts.js';
 
 document.getElementById('login').onclick = () => {
 	const email = document.getElementById('email').value;
@@ -87,22 +88,51 @@ document.getElementById('register').onclick = () => {
 	}
 };
 
-const keywords = prompt('Mời bạn nhập keyword');
+// Ý 3
+// const keywords = prompt('Mời bạn nhập keyword');
 
+// for (let user of listUser) {
+// 	const newUser = {
+// 		id: user.id,
+// 		name: user.first_name + ' ' + user.last_name,
+// 		email: user.email,
+// 	};
+// 	if (keywords.length === 0) {
+// 		console.log(newUser);
+// 		continue;
+// 	}
+// 	if (
+// 		newUser.name.toUpperCase().includes(keywords.toUpperCase()) ||
+// 		newUser.email.includes(keywords)
+// 	) {
+// 		console.log(newUser);
+// 	}
+// }
+
+// Ý 6
+const findPostsByUserId = (userId) => {
+	const results = [];
+	for (let post of listPosts) {
+		if (post.user_id === userId) {
+			results.push(post);
+		}
+	}
+
+	return results;
+};
+
+// const email = prompt('Mời bạn nhập email');
+const email = 'gmanwell1@naver.com';
+
+let postsByUserId;
 for (let user of listUser) {
-	const newUser = {
-		id: user.id,
-		name: user.first_name + ' ' + user.last_name,
-		email: user.email,
-	};
-	if (keywords.length === 0) {
-		console.log(newUser);
-		continue;
+	if (user.email === email) {
+		postsByUserId = findPostsByUserId(user.id);
 	}
-	if (
-		newUser.name.toUpperCase().includes(keywords.toUpperCase()) ||
-		newUser.email.includes(keywords)
-	) {
-		console.log(newUser);
-	}
+}
+
+if (postsByUserId) {
+	console.log('postsByUserId: ', postsByUserId);
+} else {
+	console.log('Không tìm thấy');
 }
