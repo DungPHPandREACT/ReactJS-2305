@@ -86,3 +86,23 @@ document.getElementById('register').onclick = () => {
 		alert('Đăng ký thành công');
 	}
 };
+
+const keywords = prompt('Mời bạn nhập keyword');
+
+for (let user of listUser) {
+	const newUser = {
+		id: user.id,
+		name: user.first_name + ' ' + user.last_name,
+		email: user.email,
+	};
+	if (keywords.length === 0) {
+		console.log(newUser);
+		continue;
+	}
+	if (
+		newUser.name.toUpperCase().includes(keywords.toUpperCase()) ||
+		newUser.email.includes(keywords)
+	) {
+		console.log(newUser);
+	}
+}
