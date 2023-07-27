@@ -8,7 +8,7 @@ fetch('https://64c25bf6eb7fd5d6ebcfb370.mockapi.io/api/v1/blogs', {
 		return response.json();
 	})
 	.then((data) => {
-		console.log(data);
+		renderBlogs(data);
 	})
 	.catch((err) => {
 		console.log(err);
@@ -29,7 +29,7 @@ const renderBlogs = (blogs) => {
 			</a>
 			<p class="post-meta">
 				Posted by
-				a href="#!">${blog.author}</a>
+				<a href="#!">${blog.author}</a>
 				on ${blog.createdAt}
 			</p>
 		</div>
@@ -39,3 +39,7 @@ const renderBlogs = (blogs) => {
 	}
 	content_blogs.innerHTML = stringHTML;
 };
+
+console.log('listBlogs: ', listBlogs);
+
+renderBlogs(listBlogs);
