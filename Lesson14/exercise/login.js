@@ -110,6 +110,9 @@ document.getElementById('register').onclick = () => {
 // }
 
 // Ý 6
+
+// const email = prompt('Mời bạn nhập email');
+const email = 'cdowtry2@mapy.cz';
 const findPostsByUserId = (userId) => {
 	const results = [];
 	for (let post of listPosts) {
@@ -121,10 +124,8 @@ const findPostsByUserId = (userId) => {
 	return results;
 };
 
-// const email = prompt('Mời bạn nhập email');
-const email = 'gmanwell1@naver.com';
-
 let postsByUserId;
+
 for (let user of listUser) {
 	if (user.email === email) {
 		postsByUserId = findPostsByUserId(user.id);
