@@ -14,12 +14,16 @@ fetch('https://64c25bf6eb7fd5d6ebcfb370.mockapi.io/api/v1/blogs', {
 		console.log(err);
 	});
 
+const convertSlug = (title, id) => {
+	return title.toLowerCase().replaceAll(' ', '-').replace('.', '-') + id;
+};
+
 const renderBlogs = (blogs) => {
 	let stringHTML = '';
 	for (let blog of blogs) {
 		stringHTML += `
         <div class="post-preview">
-			<a href="post.html">
+			<a href="post.html?slug=${convertSlug(blog.title, blog.id)}">
 				<h2 class="post-title">
 					${blog.title}
 				</h2>
@@ -39,7 +43,3 @@ const renderBlogs = (blogs) => {
 	}
 	content_blogs.innerHTML = stringHTML;
 };
-
-console.log('listBlogs: ', listBlogs);
-
-renderBlogs(listBlogs);
