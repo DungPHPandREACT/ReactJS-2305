@@ -3,6 +3,7 @@ import Navigation from './layouts/Navigation';
 import Header from './layouts/Header';
 import Product from './components/Product';
 import Footer from './layouts/Footer';
+import PageLayout from './layouts/PageLayout';
 
 const PageProduct = (props) => {
 	const listProduct = [
@@ -52,28 +53,27 @@ const PageProduct = (props) => {
 	];
 
 	return (
-		<>
-			<Navigation />
-			<Header />
+		<PageLayout>
 			<section className='py-5'>
 				<div className='container px-4 px-lg-5 mt-5'>
 					<div className='row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center'>
 						{listProduct.map((product) => (
 							<Product
-								name={product.name}
+								// name={product.name}
 								// isSale={product.isSale}
-								isRate={product.isRate}
-								price1={product.price1}
-								price2={product.price2}
-								typePrice={product.typePrice}
-							/>
+								// isRate={product.isRate}
+								// price1={product.price1}
+								// price2={product.price2}
+								// typePrice={product.typePrice}
+								{...product}
+							>
+								<h1>{product.name}</h1>
+							</Product>
 						))}
 					</div>
 				</div>
 			</section>
-
-			<Footer />
-		</>
+		</PageLayout>
 	);
 };
 

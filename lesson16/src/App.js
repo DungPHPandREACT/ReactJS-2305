@@ -4,10 +4,38 @@ import Component2 from './Component2';
 import Search from './Search';
 import Todo from './Todo';
 import PageProduct from './PageProduct';
+import { useState } from 'react';
+import Color from './Color';
 
 function App() {
-	const hello = () => {
-		console.log('XXin chafo');
+	const [number, onChange] = useState(0);
+
+	const [isRed, setIsRed] = useState(true);
+	const [isYellow, setIsYellow] = useState(false);
+	const [isGreen, setIsGreen] = useState(false);
+
+	// let number = 0;
+	console.log(useState(0));
+
+	const changeValue = (parameter) => {
+		// number = number + 1;
+		// console.log(number);
+		// setNumber(number+1)
+
+		console.log(parameter);
+	};
+
+	const handleChangeColor = () => {
+		if (isRed) {
+			setIsRed(false);
+			setIsYellow(true);
+		} else if (isYellow) {
+			setIsYellow(false);
+			setIsGreen(true);
+		} else {
+			setIsGreen(false);
+			setIsRed(true);
+		}
 	};
 
 	return (
@@ -20,7 +48,34 @@ function App() {
 		// 	<Todo task='4'></Todo>
 		// 	<Todo task='5' />
 		// </div>
-		<PageProduct />
+		// <PageProduct />
+		// <>
+		// 	<h1>Giá trị hiện tại {number}</h1>
+		// 	<button
+		// 		onClick={() => {
+		// 			changeValue(123);
+		// 		}}
+		// 	>
+		// 		Cộng ( + )
+		// 	</button>
+		// </>
+
+		<>
+			<div style={{ margin: 'auto', textAlign: 'center' }}>
+				<button onClick={handleChangeColor}>Next</button>
+			</div>
+			<div
+				style={{
+					margin: 'auto',
+					justifyContent: 'center',
+					display: 'flex',
+				}}
+			>
+				<Color background={isRed ? 'red' : ''} />
+				<Color background={isYellow ? 'yellow' : ''}/>
+				<Color background={isGreen ? 'green' : ''}/>
+			</div>
+		</>
 	);
 }
 

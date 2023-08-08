@@ -5,6 +5,8 @@ const Product = (props) => {
 	// Cách 1
 	const { name = 'Product', isSale, isRate, price1, price2, typePrice } = props;
 
+	console.log('props.children', props.children);
+
 	const printPrice = () => {
 		console.log('typePrice: ', typePrice);
 		switch (typePrice) {
@@ -52,7 +54,7 @@ const Product = (props) => {
 				<div className='card-body p-4'>
 					<div className='text-center'>
 						{/* Product name*/}
-						<h5 className='fw-bolder'>{name}</h5>
+						<h5 className='fw-bolder'>{props.children}</h5>
 						{/* Product reviews*/}
 						{isRate && (
 							<div className='d-flex justify-content-center small text-warning mb-2'>
