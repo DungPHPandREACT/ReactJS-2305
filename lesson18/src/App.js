@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import Test from './Test';
 import Post from './Post';
 import FormAddBlog from './FormAddBlog';
+import A from './components/A';
+import DataContext from './DataContext';
 
 const App = () => {
 	const [isShow, setIsShow] = useState(false);
@@ -23,11 +25,14 @@ const App = () => {
 		setListBlogs([...listBlogs, data]);
 	};
 
-	console.log(listBlogs);
+	const data = {
+		name: 'ABC',
+		listBlogs,
+	};
 
 	return (
 		<>
-			<FormAddBlog handleAddBlog={handleAddBlog} />
+			{/* <FormAddBlog handleAddBlog={handleAddBlog} />
 			{loading === true ? (
 				<h1>Loading...</h1>
 			) : (
@@ -38,7 +43,10 @@ const App = () => {
 						</div>
 					);
 				})
-			)}
+			)} */}
+			<DataContext.Provider value={data}>
+				<A listBlogs={listBlogs} />
+			</DataContext.Provider>
 		</>
 	);
 };
