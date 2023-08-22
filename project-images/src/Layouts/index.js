@@ -35,7 +35,7 @@ const Layouts = (props) => {
 			label: 'Wallpaper',
 		},
 		{
-			key: 'webssites',
+			key: 'websites',
 			label: 'Websites',
 		},
 		{
