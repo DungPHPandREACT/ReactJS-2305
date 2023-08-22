@@ -1,6 +1,7 @@
 import {
 	ArrowsAltOutlined,
-	DownloadOutlined
+	DownloadOutlined,
+	SaveOutlined,
 } from '@ant-design/icons';
 import { Avatar, Card } from 'antd';
 import React from 'react';
@@ -22,11 +23,12 @@ const Homepage = () => {
 		<Masonry columnsCount={4} gutter='10px'>
 			{images.map((image, i) => (
 				<Card
+					key={i}
 					cover={<img alt='example' src={image} />}
 					actions={[
 						<DownloadOutlined key='download' />,
 						<ArrowsAltOutlined key='open-link' />,
-						// <EllipsisOutlined key='ellipsis' />,
+						<SaveOutlined key='save-image' />,
 					]}
 				>
 					<Meta
