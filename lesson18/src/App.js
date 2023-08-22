@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import Test from './Test';
+import Test from './contexts/Test';
 import Post from './Post';
 import FormAddBlog from './FormAddBlog';
 import A from './components/A';
-import DataContext from './DataContext';
+import DataContext from './contexts/DataContext';
+import ImageContext from './ImageContext';
 
 const App = () => {
 	const [isShow, setIsShow] = useState(false);
@@ -28,6 +29,7 @@ const App = () => {
 	const data = {
 		name: 'ABC',
 		listBlogs,
+		setListBlogs,
 	};
 
 	return (
@@ -45,7 +47,9 @@ const App = () => {
 				})
 			)} */}
 			<DataContext.Provider value={data}>
-				<A listBlogs={listBlogs} />
+				<ImageContext.Provider>
+					<A listBlogs={listBlogs} />
+				</ImageContext.Provider>
 			</DataContext.Provider>
 		</>
 	);

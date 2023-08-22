@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import X from './X';
-import DataContext from '../DataContext';
+import DataContext from '../contexts/DataContext';
 
 const E = () => {
 	const data = useContext(DataContext);
