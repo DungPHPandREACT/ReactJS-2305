@@ -7,6 +7,7 @@ import { Avatar, Card } from 'antd';
 import React, { useEffect, useState } from 'react';
 import Masonry from 'react-responsive-masonry';
 import { useParams } from 'react-router-dom';
+import CardImage from '../../components/CardImage';
 const { Meta } = Card;
 
 const Category = ({ images }) => {
@@ -24,20 +25,7 @@ const Category = ({ images }) => {
 	return (
 		<Masonry columnsCount={4} gutter='10px'>
 			{listImage.map((image, i) => (
-				<Card
-					key={image.id}
-					cover={<img alt={image.nameImage} src={image.link} />}
-					actions={[
-						<DownloadOutlined key='download' />,
-						<ArrowsAltOutlined key='open-link' />,
-						<SaveOutlined key='save-image' />,
-					]}
-				>
-					<Meta
-						avatar={<Avatar>{image.author.name[0]}</Avatar>}
-						title={image.author.name}
-					/>
-				</Card>
+				<CardImage key={image.id} image={image} />
 			))}
 		</Masonry>
 	);
