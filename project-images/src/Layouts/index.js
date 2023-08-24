@@ -85,6 +85,7 @@ const Layouts = (props) => {
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 	const [isModalOpen, setIsModalOpen] = useState(false);
+	const [isClickSignIn, setIsClickSignIn] = useState(false);
 
 	const handleChangeEmail = (e) => {
 		setEmail(e.target.value);
@@ -93,7 +94,12 @@ const Layouts = (props) => {
 		setPassword(e.target.value);
 	};
 
-	const showModal = () => {
+	const showModal = (status) => {
+		if (status === 'signIn') {
+			setIsClickSignIn(true);
+		} else {
+			setIsClickSignIn(false);
+		}
 		setIsModalOpen(true);
 	};
 	// const handleOk = () => {
@@ -123,6 +129,20 @@ const Layouts = (props) => {
 			return { error: error.message };
 		}
 	};
+	const signIn = async () => {
+		try {
+			const userCredential = await signInWithEmailAndPassword(
+				auth,
+				email,
+				password
+			);
+			const user = userCredential.user;
+			console.log(user);
+			return true;
+		} catch (error) {
+			return { error: error.message };
+		}
+	};
 	const handleCancel = () => {
 		setIsModalOpen(false);
 	};
@@ -143,10 +163,10 @@ const Layouts = (props) => {
 	return (
 		<Layout>
 			<Modal
-				title='Đăng ký'
+				title={isClickSignIn ? 'Đăng nhập' : 'Đăng ký'}
 				open={isModalOpen}
-				onOk={signUp}
-				okText='Đăng ký'
+				onOk={isClickSignIn ? signIn : signUp}
+				okText={isClickSignIn ? 'Đăng nhập' : 'Đăng ký'}
 				onCancel={handleCancel}
 			>
 				<div style={{ margin: '8px' }}>
@@ -202,7 +222,7 @@ const Layouts = (props) => {
 								style={{
 									margin: '0px 8px',
 								}}
-								onClick={showModal}
+								onClick={() => showModal('signUp')}
 							>
 								Sign Up
 							</Button>
@@ -211,6 +231,7 @@ const Layouts = (props) => {
 								style={{
 									margin: '0px 8px',
 								}}
+								onClick={() => showModal('signIn')}
 							>
 								Sign In
 							</Button>
