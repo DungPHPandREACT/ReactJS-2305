@@ -6,8 +6,11 @@ import Category from './pages/Category';
 import ImageDetail from './pages/ImageDetail';
 import UserDetail from './pages/UserDetail';
 import SignIn from './pages/SignIn';
+import AppContext from './context/AppContext';
 
 const App = () => {
+	const [appData, setAppData] = useState({});
+
 	const images = [
 		{
 			link: 'https://picsum.photos/200/300?image=1050',
@@ -82,18 +85,25 @@ const App = () => {
 	];
 
 	return (
-		<Layouts>
-			<Routes>
-				<Route path='/' element={<Homepage images={images} />} />
-				<Route
-					path='/category/:categoryName'
-					element={<Category images={images} />}
-				/>
-				<Route path='/image-detail/:idImage' element={<ImageDetail />} />
-				<Route path='/user-profile/:idUser' element={<UserDetail />} />
-				<Route path='/sign-in' element={<SignIn />} />
-			</Routes>
-		</Layouts>
+		<AppContext.Provider
+			value={{
+				data: appData,
+				onChangeData: setAppData,
+			}}
+		>
+			<Layouts>
+				<Routes>
+					<Route path='/' element={<Homepage images={images} />} />
+					<Route
+						path='/category/:categoryName'
+						element={<Category images={images} />}
+					/>
+					<Route path='/image-detail/:idImage' element={<ImageDetail />} />
+					<Route path='/user-profile/:idUser' element={<UserDetail />} />
+					<Route path='/sign-in' element={<SignIn />} />
+				</Routes>
+			</Layouts>
+		</AppContext.Provider>
 	);
 };
 

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { auth, db } from '../firebase/FirebaseConfig';
 import {
 	getAuth,
@@ -15,7 +15,7 @@ import {
 	UserOutlined,
 	VideoCameraOutlined,
 } from '@ant-design/icons';
-import { Layout, Menu, Button, theme, Modal, Input } from 'antd';
+import { Layout, Menu, Button, theme, Modal, Input, Avatar } from 'antd';
 import { useNavigate } from 'react-router-dom';
 const { Header, Sider, Content } = Layout;
 
@@ -86,6 +86,9 @@ const Layouts = (props) => {
 	const [password, setPassword] = useState('');
 	const [isModalOpen, setIsModalOpen] = useState(false);
 	const [isClickSignIn, setIsClickSignIn] = useState(false);
+	const [isLogin, setIsLogin] = useState(false);
+	// Chưa đăng nhập isLogin => false
+	// Đăng nhập thành công isLogin => true
 
 	const handleChangeEmail = (e) => {
 		setEmail(e.target.value);
@@ -122,6 +125,10 @@ const Layouts = (props) => {
 				uid: user.uid,
 				email: user.email,
 			});
+			if (user) {
+				setIsLogin(true);
+				localStorage.setItem('uid', user.uid);
+			}
 			console.log(result);
 			setIsModalOpen(false);
 			return true;
@@ -138,6 +145,10 @@ const Layouts = (props) => {
 			);
 			const user = userCredential.user;
 			console.log(user);
+			if (user) {
+				setIsLogin(true);
+				localStorage.setItem('uid', user.uid);
+			}
 			setIsModalOpen(false);
 			return true;
 		} catch (error) {
@@ -160,6 +171,13 @@ const Layouts = (props) => {
 			navigate(`/category/${key}`);
 		}
 	};
+
+	useEffect(() => {
+		const uid = localStorage.getItem('uid');
+		if (uid) {
+			setIsLogin(true);
+		}
+	}, []);
 
 	return (
 		<Layout>
@@ -218,24 +236,34 @@ const Layouts = (props) => {
 							}}
 						/>
 						<div>
-							<Button
-								type='primary'
-								style={{
-									margin: '0px 8px',
-								}}
-								onClick={() => showModal('signUp')}
-							>
-								Sign Up
-							</Button>
-							<Button
-								type='default'
-								style={{
-									margin: '0px 8px',
-								}}
-								onClick={() => showModal('signIn')}
-							>
-								Sign In
-							</Button>
+							{isLogin ? (
+								<Avatar
+									shape='square'
+									size={50}
+									src='https://xsgames.co/randomusers/avatar.php?g=pixel&key=1'
+								/>
+							) : (
+								<>
+									<Button
+										type='primary'
+										style={{
+											margin: '0px 8px',
+										}}
+										onClick={() => showModal('signUp')}
+									>
+										Sign Up
+									</Button>
+									<Button
+										type='default'
+										style={{
+											margin: '0px 8px',
+										}}
+										onClick={() => showModal('signIn')}
+									>
+										Sign In
+									</Button>
+								</>
+							)}
 						</div>
 					</div>
 				</Header>
