@@ -138,6 +138,7 @@ const Layouts = (props) => {
 			);
 			const user = userCredential.user;
 			console.log(user);
+			setIsModalOpen(false);
 			return true;
 		} catch (error) {
 			return { error: error.message };
