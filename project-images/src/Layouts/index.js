@@ -1,4 +1,13 @@
 import React, { useState } from 'react';
+import { auth, db } from '../firebase/FirebaseConfig';
+import {
+	getAuth,
+	createUserWithEmailAndPassword,
+	signInWithEmailAndPassword,
+	signOut,
+} from 'firebase/auth';
+import { getFirestore, addDoc, collection } from 'firebase/firestore';
+
 import {
 	MenuFoldOutlined,
 	MenuUnfoldOutlined,
@@ -6,9 +15,10 @@ import {
 	UserOutlined,
 	VideoCameraOutlined,
 } from '@ant-design/icons';
-import { Layout, Menu, Button, theme } from 'antd';
+import { Layout, Menu, Button, theme, Modal, Input } from 'antd';
 import { useNavigate } from 'react-router-dom';
 const { Header, Sider, Content } = Layout;
+
 const Layouts = (props) => {
 	const listMenu = [
 		{
@@ -72,6 +82,51 @@ const Layouts = (props) => {
 		},
 	];
 	const [collapsed, setCollapsed] = useState(false);
+	const [email, setEmail] = useState('');
+	const [password, setPassword] = useState('');
+	const [isModalOpen, setIsModalOpen] = useState(false);
+
+	const handleChangeEmail = (e) => {
+		setEmail(e.target.value);
+	};
+	const handleChangePassword = (e) => {
+		setPassword(e.target.value);
+	};
+
+	const showModal = () => {
+		setIsModalOpen(true);
+	};
+	// const handleOk = () => {
+	// 	console.log('email: ', email);
+	// 	console.log('password: ', password);
+	// 	// setIsModalOpen(false);
+	// 	// signUp(email, password);
+	// };
+	const signUp = async () => {
+		try {
+			const userCredential = await createUserWithEmailAndPassword(
+				auth,
+				email,
+				password
+			);
+
+			const user = userCredential.user;
+
+			const result = await addDoc(collection(db, 'users'), {
+				uid: user.uid,
+				email: user.email,
+			});
+			console.log(result);
+			setIsModalOpen(false);
+			return true;
+		} catch (error) {
+			return { error: error.message };
+		}
+	};
+	const handleCancel = () => {
+		setIsModalOpen(false);
+	};
+
 	const {
 		token: { colorBgContainer },
 	} = theme.useToken();
@@ -87,6 +142,27 @@ const Layouts = (props) => {
 
 	return (
 		<Layout>
+			<Modal
+				title='Đăng ký'
+				open={isModalOpen}
+				onOk={signUp}
+				okText='Đăng ký'
+				onCancel={handleCancel}
+			>
+				<div style={{ margin: '8px' }}>
+					<Input
+						placeholder='Enter your email...'
+						onChange={handleChangeEmail}
+					/>
+				</div>
+				<div style={{ margin: '8px' }}>
+					<Input
+						placeholder='Enter your password...'
+						type='password'
+						onChange={handleChangePassword}
+					/>
+				</div>
+			</Modal>
 			<Sider trigger={null} collapsible collapsed={collapsed}>
 				<div className='demo-logo-vertical' />
 				<Menu
@@ -104,16 +180,42 @@ const Layouts = (props) => {
 						background: colorBgContainer,
 					}}
 				>
-					<Button
-						type='text'
-						icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
-						onClick={() => setCollapsed(!collapsed)}
+					<div
 						style={{
-							fontSize: '16px',
-							width: 64,
-							height: 64,
+							display: 'flex',
+							justifyContent: 'space-between',
 						}}
-					/>
+					>
+						<Button
+							type='text'
+							icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+							onClick={() => setCollapsed(!collapsed)}
+							style={{
+								fontSize: '16px',
+								width: 64,
+								height: 64,
+							}}
+						/>
+						<div>
+							<Button
+								type='primary'
+								style={{
+									margin: '0px 8px',
+								}}
+								onClick={showModal}
+							>
+								Sign Up
+							</Button>
+							<Button
+								type='default'
+								style={{
+									margin: '0px 8px',
+								}}
+							>
+								Sign In
+							</Button>
+						</div>
+					</div>
 				</Header>
 				<Content
 					style={{
