@@ -1,12 +1,12 @@
-import React from 'react';
-import Layouts from './Layouts';
+import React, { useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import Homepage from './pages/Homepage';
-import Category from './pages/Category';
-import ImageDetail from './pages/ImageDetail';
-import UserDetail from './pages/UserDetail';
-import SignIn from './pages/SignIn';
+import Layouts from './Layouts';
 import AppContext from './context/AppContext';
+import Category from './pages/Category';
+import Homepage from './pages/Homepage';
+import ImageDetail from './pages/ImageDetail';
+import SignIn from './pages/SignIn';
+import UserDetail from './pages/UserDetail';
 
 const App = () => {
 	const [appData, setAppData] = useState({});

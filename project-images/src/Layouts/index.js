@@ -176,6 +176,7 @@ const Layouts = (props) => {
 		const uid = localStorage.getItem('uid');
 		if (uid) {
 			setIsLogin(true);
+			
 		}
 	}, []);
 
